@@ -125,6 +125,8 @@
             right: 0;
             z-index: 1000;
             box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
+            max-height: 120px;
+            overflow-y: auto;
         }
 
         .question-number {
@@ -139,6 +141,8 @@
             cursor: pointer;
             transition: all 0.3s ease;
             background: var(--light-bg);
+            flex-shrink: 0;
+            min-width: 40px;
         }
 
         .question-number.current {
@@ -243,15 +247,18 @@
             display: none !important;
         }
 
-        @media (max-width: 768px) {
+                 @media (max-width: 768px) {
             .question-palette {
                 padding: 0.5rem;
+                max-height: 100px;
             }
             
             .question-number {
                 width: 35px;
                 height: 35px;
                 font-size: 0.875rem;
+                min-width: 35px;
+                margin: 2px;
             }
             
             .timer-display {
@@ -444,7 +451,7 @@
                     <small><span class="question-number flagged" style="width: 20px; height: 20px; font-size: 10px;"></span> Flagged</small>
                 </div>
             </div>
-            <div class="d-flex flex-wrap justify-content-center" id="paletteNumbers">
+            <div class="d-flex flex-nowrap justify-content-start" id="paletteNumbers" style="overflow-x: auto; overflow-y: hidden; padding-bottom: 10px;">
                 <!-- Question numbers will be populated by JavaScript -->
             </div>
         </div>
