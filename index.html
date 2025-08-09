@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="icon" type="image/png" href="favicon-96x96.png" sizes="96x96" />
+<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+<link rel="shortcut icon" href="favicon.ico" />
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+<link rel="manifest" href="site.webmanifest" />
+
+
+    <title>Sindh Agriculture University Tando Jam (SAU) Online Mock Test For 2k26 Batch</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        /* Professional Color Palette */
+        :root {
+            --primary-blue: #1e40af;
+            --primary-blue-light: #3b82f6;
+            --secondary-blue: #0f172a;
+            --accent-gold: #f59e0b;
+            --accent-gold-light: #fbbf24;
+            --neutral-gray: #64748b;
+            --neutral-light: #f8fafc;
+            --success-green: #059669;
+            --text-dark: #1e293b;
+        }
+        
+        /* Professional Gradients */
+        .bg-gradient-primary {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-blue-light) 100%);
+        }
+        
+        .bg-gradient-secondary {
+            background: linear-gradient(135deg, var(--secondary-blue) 0%, var(--primary-blue) 100%);
+        }
+        
+        .bg-gradient-accent {
+            background: linear-gradient(135deg, var(--accent-gold) 0%, var(--accent-gold-light) 100%);
+        }
+        
+        .bg-gradient-hero {
+            background: linear-gradient(135deg, var(--secondary-blue) 0%, var(--primary-blue) 50%, var(--primary-blue-light) 100%);
+        }
+        
+        /* Subtle Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        
+        .animate-fadeInUp { animation: fadeInUp 0.6s ease-out; }
+        .animate-slideInLeft { animation: slideInLeft 0.6s ease-out; }
+        .animate-slideInRight { animation: slideInRight 0.6s ease-out; }
+        .animate-scaleIn { animation: scaleIn 0.5s ease-out; }
+        
+        /* Professional Card Styles */
+        .card-professional {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .card-professional:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            border-color: var(--primary-blue-light);
+        }
+        
+        /* Professional Button Styles */
+        .btn-primary {
+            background: var(--primary-blue);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 12px 24px;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+        
+        .btn-primary:hover {
+            background: var(--primary-blue-light);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(30, 64, 175, 0.3);
+        }
+
+        .btn-disabled {
+            background: #cbd5e1; /* Tailwind gray-300 */
+            color: #64748b; /* Tailwind gray-600 */
+            border: none;
+            border-radius: 8px;
+            padding: 12px 24px;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: not-allowed;
+        }
+        
+        .btn-secondary {
+            background: white;
+            color: var(--primary-blue);
+            border: 2px solid var(--primary-blue);
+            border-radius: 8px;
+            padding: 10px 22px;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+        
+        .btn-secondary:hover {
+            background: var(--primary-blue);
+            color: white;
+            transform: translateY(-1px);
+        }
+        
+        /* Professional Typography */
+        .text-gradient {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--accent-gold) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        /* Loading Animation */
+        .loading-spinner {
+            width: 32px;
+            height: 32px;
+            border: 3px solid rgba(30, 64, 175, 0.2);
+            border-top: 3px solid var(--primary-blue);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .card-professional {
+                margin-bottom: 1rem;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+            
+            .tests-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+        }
+        
+        @media (max-width: 640px) {
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Professional Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: var(--neutral-gray);
+            border-radius: 3px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary-blue);
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-gradient-hero">
+    
+    <!-- Header -->
+    <header class="bg-white/10 backdrop-blur-md border-b border-white/20 animate-fadeInUp">
+        <div class="container mx-auto px-8 py-8">
+            <div class="flex items-center justify-center space-x-3">
+                <img src="SAU_Logo.png" alt="Sindh Agriculture University Logo" class="h-24 w-24 object-contain">
+                <div class="text-center">
+                    <h1 class="text-3xl md:text-4xl font-bold text-white mb-2 animate-slideInLeft">
+                        Sindh Agriculture University
+                    </h1>
+                    <h2 class="text-lg md:text-xl font-medium text-white/90 animate-slideInRight" 
+                        style="animation-delay: 0.1s;">
+                        Entry Test Mock Series - 2k26 Batch
+                    </h2>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-6 py-12">
+        
+        <!-- Hero Section -->
+        <div class="text-center mb-16 animate-fadeInUp" style="animation-delay: 0.2s;">
+            <h3 class="text-2xl md:text-3xl font-bold text-white mb-4">
+                Professional Mock Test Platform
+            </h3>
+            <p class="text-lg text-white/80 max-w-3xl mx-auto leading-relaxed">
+                Comprehensive practice tests based on the official Sindh Agriculture University Pre-Entry test syllabus. 
+                Prepare with confidence using our expertly designed assessment platform.
+            </p>
+        </div>
+
+        <!-- Notice -->
+        <div class="bg-blue-50 border border-blue-300 text-blue-700 px-6 py-4 rounded-xl mb-12 flex items-center justify-center animate-fadeInUp" style="animation-delay: 0.3s;">
+            <i data-lucide="lock" class="w-8 h-8 mr-3 text-blue-600"></i> <!-- Lock icon, larger size, and darker blue color -->
+            <p class="font-medium text-center">
+                <span class="font-bold">IMPORTANT NOTICE:</span> All mock tests are password protected. For the password, please contact us on WhatsApp: 
+                <a href="https://wa.me/923480358640" target="_blank" rel="noopener noreferrer" class="text-blue-800 underline hover:text-blue-600">
+                    +92 348 0358640
+                </a>
+            </p>
+        </div>
+
+        <!-- Syllabus Information -->
+        <div class="bg-white/10 backdrop-blur-md rounded-2xl p-8 mb-12 animate-scaleIn mx-auto max-w-screen-lg" style="animation-delay: 0.3s;">
+            <h4 class="text-xl font-bold text-white mb-6 text-center">Official Test Structure</h4>
+            <!-- Changed grid-cols-5 to grid-cols-4 as there are 4 subject blocks -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 text-center">
+                <div class="text-center">
+                    <div class="w-12 h-12 bg-gradient-accent rounded-full flex items-center justify-center mx-auto mb-3">
+                        <i data-lucide="book-open" class="w-6 h-6 text-white"></i>
+                    </div>
+                    <h5 class="font-semibold text-white mb-1">English/GK</h5>
+                    <p class="text-white/70 text-sm">25% (25 Questions)</p>
+                    <p class="text-white/60 text-xs mt-1">Grammar, Vocabulary, Comprehension</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-12 h-12 bg-gradient-accent rounded-full flex items-center justify-center mx-auto mb-3">
+                        <i data-lucide="flask-conical" class="w-6 h-6 text-white"></i>
+                    </div>
+                    <h5 class="font-semibold text-white mb-1">Biology/Mathematics</h5>
+                    <p class="text-white/70 text-sm">25% (25 Questions)</p>
+                    <p class="text-white/60 text-xs mt-1">General Science, Botony, Zoolagy, Arithmetic, Fractions, Percentage</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-12 h-12 bg-gradient-accent rounded-full flex items-center justify-center mx-auto mb-3">
+                        <i data-lucide="globe" class="w-6 h-6 text-white"></i>
+                    </div>
+                    <h5 class="font-semibold text-white mb-1">Chemistry/Computer</h5>
+                    <p class="text-white/70 text-sm">25% (25 Questions)</p>
+                    <p class="text-white/60 text-xs mt-1">Chemistry Formulas and Equations, Computer Knowledge</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-12 h-12 bg-gradient-accent rounded-full flex items-center justify-center mx-auto mb-3">
+                        <i data-lucide="calculator" class="w-6 h-6 text-white"></i>
+                    </div>
+                    <h5 class="font-semibold text-white mb-1">Physics</h5>
+                    <p class="text-white/70 text-sm">25% (25 Questions)</p>
+                    <p class="text-white/60 text-xs mt-1">Formulas, Problems</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Stats Section -->
+        <div class="stats-grid grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
+            <div class="text-center p-6 card-professional animate-scaleIn" style="animation-delay: 0.4s;">
+                <div class="w-12 h-12 bg-gradient-primary rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i data-lucide="file-text" class="w-6 h-6 text-white"></i>
+                </div>
+                <div class="text-3xl font-bold text-gray-800 mb-2">10</div>
+                <div class="text-gray-600 font-medium">Mock Tests</div>
+            </div>
+            
+            <div class="text-center p-6 card-professional animate-scaleIn" style="animation-delay: 0.5s;">
+                <div class="w-12 h-12 bg-gradient-primary rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i data-lucide="clock" class="w-6 h-6 text-white"></i>
+                </div>
+                <div class="text-3xl font-bold text-gray-800 mb-2">100</div>
+                <div class="text-gray-600 font-medium">Minutes Each</div>
+            </div>
+            
+            <div class="text-center p-6 card-professional animate-scaleIn" style="animation-delay: 0.6s;">
+                <div class="w-12 h-12 bg-gradient-primary rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i data-lucide="help-circle" class="w-6 h-6 text-white"></i>
+                </div>
+                <div class="text-3xl font-bold text-gray-800 mb-2">100</div>
+                <div class="text-gray-600 font-medium">Questions Each</div>
+            </div>
+            
+            <div class="text-center p-6 card-professional animate-scaleIn" style="animation-delay: 0.7s;">
+                <div class="w-12 h-12 bg-gradient-accent rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i data-lucide="star" class="w-6 h-6 text-white"></i>
+                </div>
+                <div class="text-3xl font-bold text-gray-800 mb-2">Premium</div>
+                <div class="text-gray-600 font-medium">Quality</div>
+            </div>
+        </div>
+
+        <!-- Mock Tests Grid -->
+        <div id="mockTestsGrid" class="tests-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Mock test cards will be generated by JavaScript -->
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white/10 backdrop-blur-md border-t border-white/20 py-8 mt-16 animate-fadeInUp">
+        <div class="container mx-auto px-6 text-center">
+            <p class="text-lg text-white mb-2 font-medium">
+                © 2025 Sindh Agriculture University Mock Test Series
+            </p>
+            <p class="text-white/70">
+                Powered By 
+                <a href="https://mock-test-hub.netlify.app" target="_blank" rel="noopener noreferrer" 
+                   class="text-yellow-300 hover:text-yellow-200 transition-colors duration-300 font-medium hover:underline">
+                    Mock Test Hub
+                </a>
+            </p>
+        </div>
+    </footer>
+
+    <!-- Loading Modal -->
+    <div id="loadingModal" class="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-2xl p-8 text-center max-w-sm mx-4 shadow-2xl">
+            <div class="loading-spinner mx-auto mb-4"></div>
+            <h3 class="text-xl font-bold text-gray-800 mb-2">Starting Mock Test</h3>
+            <p class="text-gray-600">Please wait while we prepare your test...</p>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            // Initialize Lucide icons
+            lucide.createIcons();
+            
+            // Mock test data with 100 questions each
+            const mockTests = [
+                { id: 1, title: 'Mock Test 1', questions: 100, duration: '100 minutes', difficulty: 'Beginner' },
+                { id: 2, title: 'Mock Test 2', questions: 100, duration: '100 minutes', difficulty: 'Beginner' },
+                { id: 3, title: 'Mock Test 3', questions: 100, duration: '100 minutes', difficulty: 'Intermediate' },
+                { id: 4, title: 'Mock Test 4', questions: 100, duration: '100 minutes', difficulty: 'Intermediate' },
+                { id: 5, title: 'Mock Test 5', questions: 100, duration: '100 minutes', difficulty: 'Intermediate' },
+                { id: 6, title: 'Mock Test 6', questions: 100, duration: '100 minutes', difficulty: 'Advanced' },
+                { id: 7, title: 'Mock Test 7', questions: 100, duration: '100 minutes', difficulty: 'Advanced' },
+                { id: 8, title: 'Mock Test 8', questions: 100, duration: '100 minutes', difficulty: 'Advanced' },
+                { id: 9, title: 'Mock Test 9', questions: 100, duration: '100 minutes', difficulty: 'Expert' },
+                { id: 10, title: 'Mock Test 10', questions: 100, duration: '100 minutes', difficulty: 'Expert' }
+            ];
+
+            // Generate mock test cards
+            function generateMockTestCards() {
+                const grid = $('#mockTestsGrid');
+                
+                mockTests.forEach((test, index) => {
+                    const difficultyColor = getDifficultyColor(test.difficulty);
+                    
+                    // Determine button text and class based on test ID
+                    const buttonText = test.id === 1 ? 'Start Test' : 'Coming Soon';
+                    const buttonClass = test.id === 1 ? 'btn-primary' : 'btn-disabled';
+                    const buttonIcon = test.id === 1 ? 'play' : 'hourglass'; // Use 'hourglass' for coming soon
+
+                    const card = $(`
+                        <div class="card-professional p-6 cursor-pointer mock-test-card animate-scaleIn" 
+                             style="animation-delay: ${0.8 + index * 0.1}s;" data-test-id="${test.id}">
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="w-12 h-12 bg-gradient-primary rounded-full flex items-center justify-center">
+                                    <span class="text-lg font-bold text-white">${test.id}</span>
+                                </div>
+                                <span class="px-3 py-1 text-xs font-semibold rounded-full ${difficultyColor}">
+                                    ${test.difficulty}
+                                </span>
+                            </div>
+                            
+                            <h4 class="text-xl font-bold text-gray-800 mb-2">${test.title}</h4>
+                            <p class="text-gray-600 mb-4 leading-relaxed">
+                                Complete practice test following official SAU entry test pattern
+                            </p>
+                            
+                            <div class="space-y-3 mb-6">
+                                <div class="flex items-center text-gray-700">
+                                    <i data-lucide="file-text" class="w-4 h-4 mr-3 text-blue-600"></i>
+                                    <span class="text-sm font-medium">${test.questions} Questions</span>
+                                </div>
+                                <div class="flex items-center text-gray-700">
+                                    <i data-lucide="timer" class="w-4 h-4 mr-3 text-green-600"></i>
+                                    <span class="text-sm font-medium">${test.duration}</span>
+                                </div>
+                                <div class="flex items-center text-gray-700">
+                                    <i data-lucide="check-circle" class="w-4 h-4 mr-3 text-purple-600"></i>
+                                    <span class="text-sm font-medium">Instant Results</span>
+                                </div>
+                            </div>
+                            
+                            <button class="w-full ${buttonClass} start-test-btn" data-test-id="${test.id}" ${test.id !== 1 ? 'disabled' : ''}>
+                                <i data-lucide="${buttonIcon}" class="w-4 h-4 mr-2 inline"></i>
+                                ${buttonText}
+                            </button>
+                        </div>
+                    `);
+                    
+                    grid.append(card);
+                });
+                
+                // Re-initialize Lucide icons for new elements
+                lucide.createIcons();
+            }
+
+            // Get difficulty color
+            function getDifficultyColor(difficulty) {
+                switch(difficulty) {
+                    case 'Beginner': return 'bg-green-100 text-green-800';
+                    case 'Intermediate': return 'bg-blue-100 text-blue-800';
+                    case 'Advanced': return 'bg-orange-100 text-orange-800';
+                    case 'Expert': return 'bg-red-100 text-red-800';
+                    default: return 'bg-gray-100 text-gray-800';
+                }
+            }
+
+            // Start test function
+            function startTest(testId) {
+                const test = mockTests.find(t => t.id === testId);
+                
+                // Show loading modal
+                $('#loadingModal').removeClass('hidden').addClass('flex');
+                
+                // Simulate loading time
+                setTimeout(() => {
+                    $('#loadingModal').addClass('hidden').removeClass('flex');
+                    
+                    if (testId === 1) {
+                        // Redirect to SAU-quiz1.html for Mock Test 1
+                        window.location.href = 'SAU-quiz1.html'; 
+                    } else {
+                        // Show "Coming Soon" message for other tests
+                        showNotification(`${test.title}: Coming Soon! Stay tuned for more updates.`, 'info');
+                    }
+                }, 1500);
+            }
+
+            // Notification system
+            function showNotification(message, type = 'info') {
+                const bgColor = type === 'success' ? 'bg-green-500' : 
+                               type === 'error' ? 'bg-red-500' : 'bg-blue-500';
+                
+                const notification = $(`
+                    <div class="fixed top-6 right-6 z-50 ${bgColor} text-white px-6 py-4 rounded-xl shadow-2xl animate-fadeInUp max-w-sm">
+                        <div class="flex items-center">
+                            <i data-lucide="check-circle" class="w-5 h-5 mr-3"></i>
+                            <span class="font-medium">${message}</span>
+                        </div>
+                    </div>
+                `);
+                
+                $('body').append(notification);
+                lucide.createIcons();
+                
+                setTimeout(() => {
+                    notification.fadeOut(() => notification.remove());
+                }, 3000);
+            }
+
+            // Event handlers
+            $(document).on('click', '.start-test-btn', function(e) {
+                e.stopPropagation();
+                const testId = parseInt($(this).data('test-id'));
+                startTest(testId);
+            });
+
+            $(document).on('click', '.mock-test-card', function() {
+                const testId = parseInt($(this).data('test-id'));
+                startTest(testId);
+            });
+
+            // Initialize the page
+            generateMockTestCards();
+
+            // Welcome message - Removed as it might conflict with the new notice
+            // setTimeout(() => {
+            //     showNotification('Welcome to SAU Mock Test Portal! Select any test to begin.', 'info');
+            // }, 1000);
+
+            // Performance monitoring
+            console.log('%c🎓 University of Sindh Mock Test Portal', 'color: #1e40af; font-size: 20px; font-weight: bold;');
+            console.log('%cProfessional Edition - 2k26 Batch', 'color: #64748b; font-size: 14px;');
+        });
+
+        // Page load performance
+        window.addEventListener('load', function() {
+            const loadTime = performance.now();
+            console.log(`%cPage loaded in ${Math.round(loadTime)}ms`, 'color: #059669; font-weight: bold;');
+        });
+    </script>
+</body>
+</html>
